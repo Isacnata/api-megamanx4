@@ -29,9 +29,9 @@ def create_chefe():
     cursor = conn.cursor()
 
     cursor.execute('''
-        INSERT INTO chefes_megaman_x4 (nome, historia, area, arma_ter_fraqueza, img_path)
-        VALUES (%s, %s, %s, %s, %s)
-    ''', (nome, historia, area, arma_ter_fraqueza, img_path))
+        INSERT INTO chefes_megaman_x4 (nome, historia, area, arma/tecnica, fraqueza, img_path)
+        VALUES (%s, %s, %s, %s, %s, %s)
+    ''', (nome, historia, area, arma/tecnica, fraqueza, img_path))
 
     conn.commit()
     cursor.close()
