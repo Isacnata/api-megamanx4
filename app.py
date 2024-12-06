@@ -22,16 +22,17 @@ def create_chefe():
     nome = request.json.get('nome')
     historia = request.json.get('historia')
     area = request.json.get('area')
-    arma_ter_fraqueza = request.json.get('arma_ter_fraqueza')
+    arma_tecnica = request.json.get('arma_tecnica')
+    fraqueza = request.json.get("fraqueza")
     img_path = request.json.get('img_path')
 
     conn = get_db_connection()
     cursor = conn.cursor()
 
     cursor.execute('''
-        INSERT INTO chefes_megaman_x4 (nome, historia, area, arma/tecnica, fraqueza, img_path)
+        INSERT INTO chefes_megaman_x4 (nome, historia, area, arma_tecnica, fraqueza, img_path)
         VALUES (%s, %s, %s, %s, %s, %s)
-    ''', (nome, historia, area, arma/tecnica, fraqueza, img_path))
+    ''', (nome, historia, area, arma_tecnica, fraqueza, img_path))
 
     conn.commit()
     cursor.close()
@@ -76,7 +77,8 @@ def update_chefe(id):
     nome = request.json.get('nome')
     historia = request.json.get('historia')
     area = request.json.get('area')
-    arma_ter_fraqueza = request.json.get('arma_ter_fraqueza')
+    arma_tecnica = request.json.get('arma_tecnica')
+    fraqueza = request.json.get('fraqueza')
     img_path = request.json.get('img_path')
 
     conn = get_db_connection()
@@ -84,9 +86,9 @@ def update_chefe(id):
 
     cursor.execute('''
         UPDATE chefes_megaman_x4
-        SET nome = %s, historia = %s, area = %s, arma_ter_fraqueza = %s, img_path = %s
+        SET nome = %s, historia = %s, area = %s, arma_tecnica = %s, fraqueza = %s,  img_path = %s
         WHERE id = %s
-    ''', (nome, historia, area, arma_ter_fraqueza, img_path, id))
+    ''', (nome, historia, area, arma_tecnica, fraqueza, img_path, id))
 
     conn.commit()
     cursor.close()
